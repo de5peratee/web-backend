@@ -1,0 +1,316 @@
+@font-face {
+    font-family: VHS;
+    src: url(C:/University/WEB/code1/lab1_code/public/fonts/vcrosdmonorus_vhsicons.ttf) format("truetype");
+    font-display: block;
+}
+
+body {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.89);
+}
+
+
+@keyframes borderAnimation {
+    0% {
+        box-shadow: 0 0 20px rgba(170, 255, 233, 0.8);
+    }
+    20% {
+        box-shadow: 0 0 30px rgba(158, 151, 255, 0.8);
+    }
+    40% {
+        box-shadow: 0 0 20px rgba(248, 101, 219, 0.8);
+    }
+    60% {
+        box-shadow: 0 0 20px rgba(133, 101, 248, 0.8);
+    }
+    80% {
+        box-shadow: 0 0 20px rgba(101, 152, 248, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(101, 221, 248, 0.8);
+    }
+}
+
+.profile {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bg {
+    position: fixed;
+    background-size: cover;
+    background-position: center;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    z-index: -1;
+    background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+    animation: bg-animation .2s infinite;
+    opacity: .9;
+    visibility: visible;
+}
+
+@keyframes bg-animation {
+    0% { transform: translate(0,0) }
+    10% { transform: translate(-5%,-5%) }
+    20% { transform: translate(-10%,5%) }
+    30% { transform: translate(5%,-10%) }
+    40% { transform: translate(-5%,15%) }
+    50% { transform: translate(-10%,5%) }
+    60% { transform: translate(15%,0) }
+    70% { transform: translate(0,10%) }
+    80% { transform: translate(-15%,0) }
+    90% { transform: translate(10%,5%) }
+    100% { transform: translate(5%,0) }
+}
+
+h2, h3, p {
+    font-family: VHS;
+    color: white;
+    text-align: center;
+}
+
+header {
+    padding-top: 20px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1 {
+    font-family: VHS;
+    color: white;
+    text-align: left;
+    margin: 0px;
+    font-size: x-large;
+}
+
+.date {
+    text-align: right;
+    margin: 0;
+    font-size: small;
+}
+
+.vhs {
+    position: relative;
+    padding-left: 10px;
+    color: #fff;
+    text-shadow: 0.06rem 0 0.06rem #9100f2, -0.125rem 0 0.06rem #00eaf2;
+    animation: textflicker 0.1s infinite alternate; /* Изменил продолжительность анимации */
+    white-space: nowrap;
+}
+
+@keyframes textflicker {
+    from {
+        text-shadow: 1px 0 0 #ea36af, -2px 0 0 #00fde7;
+    }
+    to {
+        text-shadow: 2px 0.5px 2px #ea36af, -1px -0.5px 2px #0cffff;
+    }
+}
+
+
+.vhs span {
+    letter-spacing: 2px;
+}
+
+
+nav ul {
+    justify-content: right;
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    font-family: VHS;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: large;
+}
+
+nav p {
+    margin: 0;
+}
+nav ul li a {
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    background-color: rgb(0, 0, 0);
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    padding: 5px;
+    margin: 5px;
+}
+
+#active {
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    text-decoration: none;
+}
+
+nav ul li a:hover{
+    color: rgb(255, 255, 255);
+}
+
+#currentDateTime {
+    color: white;
+    font-weight: 700;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: #000000;
+    animation: gradient 5s ease infinite;
+    min-width: 200px;
+    z-index: 1;
+    transition: background-color 0.7s ease;
+}
+
+.dropdown-content a {
+    font-weight: 700;
+    color: #ffffff;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.7s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    font-weight: 700;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.upload {
+    margin-top: 20px;
+    padding: 20px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    font-family: VHS;
+    color: white;
+    font-weight: bold;
+}
+
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus {
+    border: 1px solid rgba(255, 255, 255, 0);
+    -webkit-text-fill-color: #ffffff;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0) inset;
+    transition: background-color 5000s ease-in-out 0s;
+    border-bottom: 1px solid #ffffff;
+}
+
+input, textarea {
+    width: 100%;
+    max-width: 500px;
+    min-height: 15px;
+    max-height: 1000px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: transparent;
+    font-family: VHS;
+    font-size: 14px;
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    outline: none;
+}
+
+label {
+    font-family: VHS;
+}
+
+input[type="radio"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    border-radius: 0;
+    margin-right: 5px;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    font-family: VHS;
+    font-size: 14px;
+    background-color: rgba(51, 51, 51, 0);
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+select option {
+    color: rgb(0, 0, 0);
+    background-color: #fff;
+}
+
+.submit-btn, .reset-btn {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.7s ease;
+}
+
+.submit-btn:hover, .reset-btn:hover {
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+}
+
+.submit-btn:hover,
+.reset-btn:hover {
+    background-color: rgb(0, 0, 0);
+}
+
+.t {
+    font-family: VHS;
+    color: white;
+    font-weight: bold;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+
+.file-upload input[type='file'] {
+    display: inline-block;
+    border: 1px dashed #ffffff;
+    background-color: rgba(0, 0, 0, 0.34);
+    cursor: pointer;
+    width: 480px;
+    height: 100px;
+}
+
+
+
+
