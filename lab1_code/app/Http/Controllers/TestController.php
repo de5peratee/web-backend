@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Test;
 use Illuminate\Http\Request;
 use App\Http\Requests\ResultsVerification;
-use App\Models\TestResult; // Импорт модели TestResult
+use Illuminate\Support\Facades\Auth;
 
 class TestController extends Controller
 {
@@ -15,6 +15,9 @@ class TestController extends Controller
 
     public function store(Request $request){
         //dd($request->all());
+        if (Auth::check()) {
+            $request->merge(['fullName' => Auth::user()->name]);
+        }
 
         $valid_ver = new ResultsVerification();
 
@@ -26,7 +29,9 @@ class TestController extends Controller
 
         $valid_ver->validate($request->all());
 
+
         if (!empty($valid_ver->getErrors())) {
+            $request->session()->flash('status', 'Форма не отправлена');
             return view('test', ['error_list' => $valid_ver->showErrors(), 'errors_data' => $valid_ver->getErrors()]);
         }
         else {
@@ -52,8 +57,14 @@ class TestController extends Controller
             $test->q2_correct = $results['q2'] == 'Верно';
             $test->q3_correct = $results['q3'] == 'Верно';
             $test->save();
+            $request->session()->flash('status', 'Форма отправлена');
 
-            return view('test', ['answers' => $answers, 'user_answers' => $user_answers, 'results'=> $results]);
+            if (Auth::check()) {
+                return view('test', ['answers' => $answers, 'user_answers' => $user_answers, 'results' => $results]);
+            }
+            else {
+                return redirect('test');
+            }
         }
     }
 }

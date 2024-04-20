@@ -16,6 +16,11 @@ export default defineConfig({
                 'resources/css/blog-editor.css',
                 'resources/css/blog.css',
                 'resources/css/upload-blog.css',
+                'resources/css/visitors.css',
+                'resources/css/log_admin.css',
+                'resources/css/reg_user.css',
+                'resources/css/log_user.css',
+
                 'resources/js/onload.js',
                 'resources/js/writeText.js'
             ],

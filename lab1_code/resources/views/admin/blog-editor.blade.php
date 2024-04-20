@@ -19,16 +19,19 @@
             <?php
             $menuItems = [
                 ['href' => '/index', 'text' => 'Главная'],
-                ['href' => '/about', 'text' => 'Обо мне'],
+                ['href' => '/about', 'text' => 'Обо мне', 'dropdown'=>[
+                    ['href' => '/about', 'text' => 'Обо мне'],
+                    ['href' => '/photoalbum', 'text' => 'Фотоальбом'],
+                    ['href' => '/contact', 'text' => 'Контакт'],
+                ]],
                 ['href' => '/guestbook', 'text' => 'Гестбук', 'dropdown' =>[
                     ['href' => '/guestbook', 'text' => 'Гестбук'],
                     ['href' => '/admin/upload-guestbook', 'text' => 'Загрузка сообщений гостевой книги'],
                 ]],
-                ['href' => '/blog', 'text' => 'Блог','active' => true, 'dropdown' =>[
+                ['href' => '/blog', 'text' => 'Блог', 'active' => true, 'dropdown' =>[
                     ['href' => '/blog', 'text' => 'Мой блог'],
                     ['href' => '/admin/blog-editor', 'text' => 'Редактор блога'],
                     ['href' => '/admin/upload-blog', 'text' => 'Загрузка сообщений блога'],
-
                 ]],
                 ['href' => '/interests', 'text' => 'Мои интересы', 'dropdown' => [
                     ['href' => '/interests#hobby', 'text' => 'Мое хобби'],
@@ -36,10 +39,17 @@
                     ['href' => '/interests#music', 'text' => 'Моя любимая музыка'],
                     ['href' => '/interests#movies', 'text' => 'Мои любимые фильмы']
                 ]],
-                ['href' => '/photoalbum', 'text' => 'Фотоальбом'],
-                ['href' => '/contact', 'text' => 'Контакт'],
                 ['href' => '/test', 'text' => 'Тест по дисциплине'],
+                ['href' => '/admin/visitors', 'text' => 'Посетители']
             ];
+            if (auth()->check()) {
+                $menuItems[] = ['href' => '/logout', 'text' => 'Выход'];
+            } else {
+                $menuItems[] = ['href' => '/log_user', 'text' => 'Вход', 'dropdown' =>[
+                    ['href' => '/log_user', 'text' => 'Войти как пользователь'],
+                    ['href' => '/admin/log_admin', 'text' => 'Войти как администратор'],
+                ]];
+            }
 
             foreach ($menuItems as $item) {
                 $active = isset($item['active']) ? ' id="active"' : '';
@@ -59,7 +69,7 @@
 </header>
 
 <div class="blog-editor">
-    <form method="POST" action="/blog-editor" enctype="multipart/form-data">
+    <form method="POST" action="/admin/blog-editor" enctype="multipart/form-data">
         @csrf
         <label for="title">Тема сообщения</label>
         <input type="text" id="title" name="title" required>

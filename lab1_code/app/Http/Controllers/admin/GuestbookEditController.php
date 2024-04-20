@@ -24,6 +24,6 @@ class GuestbookEditController extends Controller
             Storage::put('messages.inc', file_get_contents($request->file('file')));
         }
 
-        return redirect('/guestbook');
+        return redirect('/admin/upload-guestbook');
     }
 }

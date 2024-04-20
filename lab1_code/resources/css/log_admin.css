@@ -1,0 +1,153 @@
+@font-face {
+    font-family: VHS;
+    src: url(C:/University/WEB/code1/lab1_code/public/fonts/vcrosdmonorus_vhsicons.ttf) format("truetype");
+    font-display: block;
+}
+
+body {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.89);
+    visibility: hidden;
+}
+
+.bg {
+    position: fixed;
+    background-size: cover;
+    background-position: center;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    z-index: -1;
+    background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+    animation: bg-animation .2s infinite;
+    opacity: .9;
+    visibility: visible;
+}
+
+@keyframes bg-animation {
+    0% { transform: translate(0,0) }
+    10% { transform: translate(-5%,-5%) }
+    20% { transform: translate(-10%,5%) }
+    30% { transform: translate(5%,-10%) }
+    40% { transform: translate(-5%,15%) }
+    50% { transform: translate(-10%,5%) }
+    60% { transform: translate(15%,0) }
+    70% { transform: translate(0,10%) }
+    80% { transform: translate(-15%,0) }
+    90% { transform: translate(10%,5%) }
+    100% { transform: translate(5%,0) }
+}
+
+h1 {
+    font-family: VHS;
+    color: white;
+    text-align: left;
+    margin: 0px;
+    font-size: x-large;
+}
+
+#active {
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    text-decoration: none;
+}
+
+.admin {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 20px;
+    padding: 20px 40px 40px;
+    width: 400px;
+    font-family: VHS;
+    color: white;
+    font-weight: bold;
+    background: rgb(0, 0, 0);
+}
+
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus {
+    border: 1px solid rgba(255, 255, 255, 0);
+    -webkit-text-fill-color: #ffffff;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0) inset;
+    transition: background-color 5000s ease-in-out 0s;
+    border-bottom: 1px solid #ffffff;
+}
+
+input{
+    width: 380px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: transparent;
+    font-family: VHS;
+    font-size: 14px;
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    outline: none;
+}
+
+label {
+    font-family: VHS;
+}
+
+
+.submit-btn {
+    display: block;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.7s ease;
+    width: 100%;
+    border: 2px solid white;
+}
+
+.submit-btn:hover, .reset-btn:hover {
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    border: 2px solid white;
+}
+
+.submit-btn:hover,
+.reset-btn:hover {
+    background-color: rgb(0, 0, 0);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    width: 100%;
+    padding-left: 0;
+    padding-bottom: 5px;
+}
+
+li{
+    font-size: 12px;
+    width: 100%;
+    font-family: VHS;
+    list-style: none;
+    color: red;
+    text-align: left;
+    margin: 0px;
+}
+
+.text{
+    font-size: 12px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+.text a{
+    text-decoration: none;
+    color: white;
+}
+
+.text a:hover{
+    border-bottom: white solid 2px;
+}

@@ -39,7 +39,6 @@ body {
 .bg {
     position: fixed;
     background-size: cover;
-    background-position: center;
     top: -50%;
     left: -50%;
     right: -50%;
@@ -88,11 +87,10 @@ h1 {
 }
 
 .vhs {
-    position: relative;
     padding-left: 10px;
     color: #fff;
     text-shadow: 0.06rem 0 0.06rem #9100f2, -0.125rem 0 0.06rem #00eaf2;
-    animation: textflicker 0.1s infinite alternate; /* Изменил продолжительность анимации */
+    animation: textflicker 0.1s infinite alternate;
     white-space: nowrap;
 }
 
@@ -111,19 +109,18 @@ h1 {
 
 
 nav ul {
-    justify-content: right;
+    justify-content: left;
     list-style-type: none;
     padding: 10px;
     margin: 0;
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
 }
 
 nav ul li {
     font-family: VHS;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
     font-size: large;
 }
 
@@ -204,3 +201,6 @@ nav ul li a:hover{
     animation: borderAnimation 7s infinite;
     transition: background-color 1s ease;
 }
+
+
+

@@ -10,16 +10,25 @@
 <div class="bg"></div>
 <header>
     <h1>
-          <span class="vhs">
-              Мой персональный сайт
-          </span>
+        <span class="vhs">
+          Мой персональный сайт
+        </span>
+        @if (auth()->check())
+            <div class="vhs" style="font-size: 15px">
+                {{ auth()->user()->name }}
+            </div>
+        @endif
     </h1>
     <nav class="vhs">
         <ul>
             <?php
             $menuItems = [
                 ['href' => '/index', 'text' => 'Главная'],
-                ['href' => '/about', 'text' => 'Обо мне'],
+                ['href' => '/about', 'text' => 'Обо мне', 'dropdown'=>[
+                    ['href' => '/about', 'text' => 'Обо мне'],
+                    ['href' => '/photoalbum', 'text' => 'Фотоальбом'],
+                    ['href' => '/contact', 'text' => 'Контакт'],
+                ]],
                 ['href' => '/guestbook', 'text' => 'Гестбук', 'dropdown' =>[
                     ['href' => '/guestbook', 'text' => 'Гестбук'],
                     ['href' => '/admin/upload-guestbook', 'text' => 'Загрузка сообщений гостевой книги'],
@@ -28,7 +37,6 @@
                     ['href' => '/blog', 'text' => 'Мой блог'],
                     ['href' => '/admin/blog-editor', 'text' => 'Редактор блога'],
                     ['href' => '/admin/upload-blog', 'text' => 'Загрузка сообщений блога'],
-
                 ]],
                 ['href' => '/interests', 'text' => 'Мои интересы', 'dropdown' => [
                     ['href' => '/interests#hobby', 'text' => 'Мое хобби'],
@@ -36,10 +44,17 @@
                     ['href' => '/interests#music', 'text' => 'Моя любимая музыка'],
                     ['href' => '/interests#movies', 'text' => 'Мои любимые фильмы']
                 ]],
-                ['href' => '/photoalbum', 'text' => 'Фотоальбом'],
-                ['href' => '/contact', 'text' => 'Контакт'],
                 ['href' => '/test', 'text' => 'Тест по дисциплине', 'active' => true],
+                ['href' => '/admin/visitors', 'text' => 'Посетители']
             ];
+            if (auth()->check()) {
+                $menuItems[] = ['href' => '/logout', 'text' => 'Выход'];
+            } else {
+                $menuItems[] = ['href' => '/log_user', 'text' => 'Вход', 'dropdown' =>[
+                    ['href' => '/log_user', 'text' => 'Войти как пользователь'],
+                    ['href' => '/admin/log_admin', 'text' => 'Войти как администратор'],
+                ]];
+            }
 
             foreach ($menuItems as $item) {
                 $active = isset($item['active']) ? ' id="active"' : '';
@@ -61,13 +76,24 @@
 <h3>Тест по дисциплине "ВЕБ-технологии"</h3>
 <div class="info">
         <div class="t">
+            @if (session('status'))
+                <div class="{{ session('status') == 'Форма отправлена' ? 'good' : 'bad' }}">
+                    {{ session('status') }}
+                </div>
+            @endif
+
             <h3>Ввод данных и ответы на тестовые вопросы:</h3>
             <div class="container">
                 <form id="form2" action="/test" method="post">
                     @csrf
                     {!! isset($errors_data['fullName']) ? '<div class="error-message">' . $errors_data['fullName'] . '</div>' : '' !!}
+
                     <label for="fullName" class="t">Фамилия Имя Отчество:</label>
-                    <input type="text" id="fullName" name="fullName"><br><br>
+                    @if(Auth::check())
+                        <input type="text" id="fullName" name="fullName" value="{{ Auth::user()->name }}" readonly><br><br>
+                    @else
+                        <input type="text" id="fullName" name="fullName"><br><br>
+                    @endif
 
                     {!! isset($errors_data['group']) ? '<div class="error-message">' . $errors_data['group'] . '</div>' : '' !!}
                     <label for="group">Группа:</label>

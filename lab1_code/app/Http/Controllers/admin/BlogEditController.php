@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class BlogEditController
 {
+
     public function indexEditor()
     {
         return view('/admin/blog-editor');
@@ -60,7 +61,7 @@ class BlogEditController
             }
         }
 
-        return back()->with('success', 'Записи блога успешно загружены.');
+        return redirect('/admin/upload-blog');
     }
 
 
@@ -84,6 +85,6 @@ class BlogEditController
 
         $blogPost->save();
 
-        return redirect('/blog-editor');
+        return redirect('/admin/blog-editor');
     }
 }

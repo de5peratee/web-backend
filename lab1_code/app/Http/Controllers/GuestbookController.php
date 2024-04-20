@@ -34,7 +34,7 @@ class GuestbookController extends Controller
             'review' => 'required',
         ]);
 
-        $message = date('d.m.y, H:i:s') . ';' . implode(';', $data) . "\n"; // Изменено здесь
+        $message = date('d.m.y, H:i:s') . ';' . implode(';', $data) . "\n";
         Storage::append('messages.inc', $message);
 
         return redirect('/guestbook');
